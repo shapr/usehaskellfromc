@@ -1,5 +1,10 @@
 # usehaskellfromc
 write Haskell code, call it from C code
+Goal:
+- [X] show how to link to C program
+- [ ] compile C program with gcc instead of Haskell compiler
+- [ ] show how to produce Python wheel package that includes Haskell shared object
+- [ ] show how to wrap Haskell shared object via cgo
 
 This is Linux only!
 
