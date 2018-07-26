@@ -1,15 +1,20 @@
 {-# LANGUAGE BangPatterns             #-}
 {-# LANGUAGE ForeignFunctionInterface #-}
-module Foo where
+
+module Foo (fib_hs) where
 
 import Foreign
 import Foreign.C.Types
 
-fib n = go n (0,1)
+fib :: Int -> Int
+fib = go
   where
-    go !n (!a, !b) | n == 0    = a
-                   | otherwise = go (n-1) (b, a+b)
+    go 0 = 0
+    go 1 = 1
+    go n = go n + go (n-1)
+{-# INLINE fib #-}
 
 fib_hs :: CInt -> CInt
 fib_hs = fromIntegral . fib . fromIntegral
+
 foreign export ccall fib_hs :: CInt -> CInt
