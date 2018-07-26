@@ -1,19 +1,17 @@
 {-# LANGUAGE BangPatterns             #-}
 {-# LANGUAGE ForeignFunctionInterface #-}
 
-module Foo where
+module Foo (fib_hs) where
 
 import Foreign
 import Foreign.C.Types
 
-data IntPair = IntPair !Int !Int
-
 fib :: Int -> Int
-fib n = go n (IntPair 0 1)
+fib = go
   where
-    go !n (IntPair !a !b)
-      | n == 0    = a
-      | otherwise = go (n-1) (IntPair b (a + b))
+    go 0 = 0
+    go 1 = 1
+    go n = go n + go (n-1)
 {-# INLINE fib #-}
 
 fib_hs :: CInt -> CInt
