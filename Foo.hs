@@ -23,9 +23,9 @@ fib2 = go
 
 
 -- also tail call optimization friendly
-data IntPair = IntPair !Int !Int
+data IntPair = IntPair !Integer !Integer
 
-fib3 :: Int -> Int
+fib3 :: Integer -> Integer
 fib3 n = go n (IntPair 0 1)
   where
     go !n (IntPair !a !b)

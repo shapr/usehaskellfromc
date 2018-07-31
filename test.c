@@ -4,10 +4,10 @@
 
 int main(int argc, char *argv[])
 {
-    int i;
+    unsigned long i;
     hs_init(&argc, &argv); // start up the Haskell runtime
-    i = fib_hs(42);
-    printf("Fibonacci: %d\n", i);
+    i = fib_hs(50);
+    printf("Fibonacci: %lu\n", i);
 
     hs_exit(); // shutdown the Haskell runtime
     return 0;
